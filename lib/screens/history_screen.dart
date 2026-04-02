@@ -17,21 +17,23 @@ class HistoryScreen extends StatelessWidget {
   }
 
   void _rerunQuery(BuildContext context, SearchQuery query) {
+    final l10n = AppLocalizations.of(context)!;
     final selectedSites = QueryGeneratorService.defaultSites
         .where((s) => query.siteKeys.contains(s.key))
         .toList();
     context.read<SearchStateProvider>().setSearch(query, selectedSites);
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Recherche relancée / Search re-run')),
+      SnackBar(content: Text(l10n.searchRerun)),
     );
   }
 
   Future<void> _openUrl(BuildContext context, String url) async {
+    final l10n = AppLocalizations.of(context)!;
     final uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Impossible d\'ouvrir l\'URL')),
+          SnackBar(content: Text(l10n.cannotOpenUrl)),
         );
       }
     }
@@ -108,7 +110,7 @@ class _SearchesTab extends StatelessWidget {
           child: ListTile(
             leading: Icon(Icons.history, color: theme.colorScheme.primary),
             title: Text(
-              parts.isEmpty ? '(vide)' : parts.join(' • '),
+              parts.isEmpty ? l10n.emptySearch : parts.join(' • '),
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Text(

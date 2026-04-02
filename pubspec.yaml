@@ -29,8 +29,3 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
-  assets: []
-
-flutter_gen:
-  integrations:
-    flutter_svg: false

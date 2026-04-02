@@ -30,5 +30,7 @@
   "about": "About",
   "appVersion": "Version 1.0.0",
   "cannotOpenUrl": "Cannot open URL",
-  "linkSaved": "Link saved!"
+  "linkSaved": "Link saved!",
+  "emptySearch": "(empty)",
+  "searchRerun": "Search re-run!"
 }
